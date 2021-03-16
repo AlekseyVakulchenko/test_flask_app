@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of real estate objects</title>
+</head>
+<body>
+<form action="{{ url_for('real_estate_objects')}}">
+    <input type="number" name="floor" placeholder="floor" value="{{ filter_params.floor }}">
+    <input type="number" name="square" placeholder="square" value="{{ filter_params.square }}">
+    <input type="text" name="metro" placeholder="metro" value="{{ filter_params.metro }}">
+    <input type="submit" value="filter">
+</form>
+{% if object_list %}
+    {% for object in  object_list %}
+        <div>
+            <div>name:{{ object.name }} <a href="{{ url_for('real_estate_objects', object_id=object.id )}}">to detail</a></div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Not found</p>
+{% endif %}
+</body>
+</html>

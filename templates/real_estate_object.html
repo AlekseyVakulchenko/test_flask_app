@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail page</title>
+</head>
+<body>
+    detail page
+    <a href="{{ url_for('real_estate_objects')}}">Back</a>
+    {% if object_info %}
+        {% for field in object_info %}
+            <div>name: {{ field.name }}</div>
+            <div>floor: {{ field.floor }}</div>
+            <div>square: {{ field.square }}</div>
+            <div>address: {{ field.address }}</div>
+            {% if field.stations %}
+                stations:
+                {% for station in field.stations %}
+                    {{ station }}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
